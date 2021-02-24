@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"context"
+	"net/http"
 	"reflect"
 	"strconv"
 )
@@ -68,4 +69,9 @@ func (r *Request) Bind(i interface{}) error {
 	}
 
 	return nil
+}
+
+func (r Request) Header()  http.Header {
+	var res http.Header
+	return res
 }

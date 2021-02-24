@@ -32,6 +32,7 @@ func HelloHandler(c *gofr.Context) (interface{}, error) {
 		name = "World"
 	}
 
+	fmt.Println(c.Header().Get("Authorization"))//extracting header
 	return fmt.Sprintf("Hello %s!", name), nil
 }
 

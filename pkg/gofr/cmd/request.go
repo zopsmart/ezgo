@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"context"
+	"mime/multipart"
 	"net/http"
 	"reflect"
 	"strconv"
@@ -74,4 +75,10 @@ func (r *Request) Bind(i interface{}) error {
 func (r Request) Header()  http.Header {
 	var res http.Header
 	return res
+}
+
+func (r *Request) FormFile(key string) (multipart.File, *multipart.FileHeader, error){
+	var file multipart.File
+	var fileHeader multipart.FileHeader
+	return file, &fileHeader, nil
 }

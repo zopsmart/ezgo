@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"io/ioutil"
+	"mime/multipart"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -58,4 +59,8 @@ func (r *Request) body() ([]byte, error) {
 
 func (r *Request) Header() http.Header {
 	return r.req.Header
+}
+
+func (r *Request) FormFile(key string) (multipart.File, *multipart.FileHeader, error){
+	return r.req.FormFile(key)
 }

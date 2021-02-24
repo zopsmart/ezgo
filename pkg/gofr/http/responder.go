@@ -24,7 +24,11 @@ func (r Responder) Respond(data interface{}, err error) {
 	var resp interface{}
 	switch v := data.(type) {
 	case resTypes.Raw:
-		resp = v.Data
+		resp = response{
+			Data: v.Data,
+			Error: errorObj,
+			MetaData: v.MetaData,
+		}
 	default:
 		resp = response{
 			Data:  v,
@@ -46,6 +50,7 @@ func (r Responder) HTTPStatusFromError(err error) (int, interface{}) {
 }
 
 type response struct {
-	Error interface{} `json:"error,omitempty"`
-	Data  interface{} `json:"data,omitempty"`
+	Error interface{} `json:"error,omitempty" xml:"error,omitempty"`
+	Data  interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	MetaData interface{} `json:"meta,omitempty" xml:"meta,omitempty"`
 }

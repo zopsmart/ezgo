@@ -1,4 +1,4 @@
-module github.com/vikash/gofr
+module github.com/zopsmart/ezgo
 
 go 1.15
 
@@ -26,5 +26,4 @@ require (
 	golang.org/x/tools v0.0.0-20201111224557-41a3a589386c // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/genproto v0.0.0-20201111145450-ac7456db90a6 // indirect
-	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 )

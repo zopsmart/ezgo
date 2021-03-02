@@ -70,7 +70,12 @@ func (r *Request) Bind(i interface{}) error {
 	return nil
 }
 
+
 func (r *Request) GetMultipartFormData(maxMemory int64, input interface{}) error {
 	// TODO - IMPLEMENT THIS METHOD
 	return nil
+} 
+
+func (r *Request) Header(key string) string {
+	return ""
 }

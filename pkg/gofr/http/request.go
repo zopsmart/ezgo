@@ -88,3 +88,7 @@ func (r *Request) GetMultipartFormData(maxMemory int64, input interface{}) error
 
 	return nil
 }
+
+func (r *Request) Header(key string) string {
+	return r.req.Header.Get(key)
+}

@@ -1,6 +1,6 @@
 package response
 
 type Raw struct {
-	Data interface{}
+	Data     interface{}
 	MetaData interface{}
 }

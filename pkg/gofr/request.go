@@ -9,5 +9,6 @@ type Request interface {
 	Param(string) string
 	PathParam(string) string
 	Bind(interface{}) error
+	GetMultipartFormData(int64, interface{}) error
 	Header(string) string
 }

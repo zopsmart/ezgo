@@ -45,6 +45,9 @@ func (r Responder) HTTPStatusFromError(err error) (int, interface{}) {
 	case nil:
 		return http.StatusOK, nil
 
+	case errors.NewEntity:
+		return http.StatusCreated, nil
+
 	case errors.InvalidParam:
 		statusCode = http.StatusBadRequest
 

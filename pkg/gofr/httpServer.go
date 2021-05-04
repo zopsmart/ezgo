@@ -9,7 +9,7 @@ import (
 )
 
 type httpServer struct {
-	router *http2.Router
+	Router *http2.Router
 	port   int
 }
 
@@ -26,7 +26,7 @@ func (s *httpServer) Run(container *Container) {
 
 	srv = &http.Server{
 		Addr:    fmt.Sprintf(":%d", s.port),
-		Handler: cors.Handler(s.router),
+		Handler: cors.Handler(s.Router),
 	}
 
 	container.Error(srv.ListenAndServe())

@@ -22,7 +22,7 @@ type App struct {
 	Config Config // If we directly embed, unnecessary confusion between app.Get and app.GET will happen.
 
 	grpcServer *grpcServer
-	httpServer *httpServer
+	HttpServer *httpServer
 
 	cmd *cmd
 
@@ -54,8 +54,8 @@ func New() *App {
 		port = defaultHTTPPort
 	}
 
-	app.httpServer = &httpServer{
-		router: gofrHTTP.NewRouter(),
+	app.HttpServer = &httpServer{
+		Router: gofrHTTP.NewRouter(),
 		port:   port,
 	}
 
@@ -103,7 +103,7 @@ func (a *App) Run() {
 		go func(s *httpServer) {
 			defer wg.Done()
 			s.Run(a.container)
-		}(a.httpServer)
+		}(a.HttpServer)
 	}
 
 	// Start GRPC Server only if a service is registered
@@ -151,7 +151,7 @@ func (a *App) DELETE(pattern string, handler Handler) {
 
 func (a *App) add(method, pattern string, h Handler) {
 	a.httpRegistered = true
-	a.httpServer.router.Add(method, pattern, handler{
+	a.HttpServer.Router.Add(method, pattern, handler{
 		function:  h,
 		container: a.container,
 	})
